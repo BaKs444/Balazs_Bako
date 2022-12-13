@@ -228,24 +228,24 @@ namespace HomeTasks
          #region Taks5
          string sortGuests(string guests)
          {
-             guests = guests.ToUpper();
+             guests = guests.ToUpper(); //Upper case the string of guests
 
              var listOfNames = new List<string>();
 
-             listOfNames = guests.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+             listOfNames = guests.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)   //split the string to arrays by the semicolons.
                                  .ToList();
 
              var newList = new List<string>();
 
-             foreach (var name in listOfNames)
+             foreach (var name in listOfNames)      //Split the first name and last name by : and rearrange it.
              {
                  string newName = name.Split(':')[1] + ", " + name.Split(':')[0];
                  newList.Add(newName);
              }
 
-             newList.Sort();
+             newList.Sort();    //Sort the new list alphabetical order.
 
-             string result = "(" + string.Join(")(", newList) + ")";
+             string result = "(" + string.Join(")(", newList) + ")"; //Join the list to a string in the requierd format.
 
              return result;
          }
