@@ -1,0 +1,3 @@
+This projects aim to test the OrangeHRM Webpage with test automation tools. The project Created with .NET and has a folder based structure. 
+
+To use the Allure test reporter Download and install the Allure Framework from this site: https://docs.qameta.io/allure/#_installing_a_commandline . Then add it to the system variables. If you done it, íou cna open the test results from cmd. The results jsons are created here:WebUI\WebUI\bin\Debug\net6.0. Open the cmd from here and run the following command: "allure serve allure-results". The results are shown in the default web browser.
