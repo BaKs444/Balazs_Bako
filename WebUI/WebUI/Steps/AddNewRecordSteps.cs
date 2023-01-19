@@ -12,7 +12,7 @@ namespace WebUI.Test.Steps
         public readonly BaseContext _baseContext;
         public readonly AdminContext _adminContext;
         public readonly PayGradeContext _payGradeContext;
-        private const string payGradeName = "RandomName";
+        //private const string payGradeName = "RandomName";
         private const string minimumSallary = "250000";
         private const string maximumSallary = "300000";
 
@@ -31,10 +31,10 @@ namespace WebUI.Test.Steps
             _adminContext.GoToPayGradesSite();
         }
 
-        [When(@"I add a new entry with random name")]
-        public void WhenIAddANewEntryWithRandomName()
+        [When(@"I add a new entry with ""([^""]*)""")]
+        public void WhenIAddANewEntryWith(string randomName)
         {
-            _payGradeContext.AddNewName(payGradeName);
+            _payGradeContext.AddNewName(randomName);
         }
 
         [When(@"I assign sallary to it")]

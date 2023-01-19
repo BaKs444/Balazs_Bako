@@ -42,6 +42,7 @@ namespace WebUI.Test
 
         public void StopDriverAndDeleteData()
         {
+
             _payGradeContext.DeleteData();
             _driver.Close();
             _driver.Dispose();

@@ -13,8 +13,8 @@ namespace WebUI.Framework.Contexts
         }
         public void GoToPayGradesSite()
         {
-            _adminPage.jobTopBarMenu.Click();
-            _adminPage.payGradesTopBarMenu.Click();
+            _adminPage.JobTopBarMenu.Click();
+            _adminPage.PayGradesTopBarMenu.Click();
         }
 
     }

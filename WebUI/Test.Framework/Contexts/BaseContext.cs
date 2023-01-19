@@ -16,13 +16,13 @@ namespace WebUI.Framework.Contexts
 
         public bool IsPageLoaded()
         {
-            var searchTextField = new WebDriverWait(_driver, TimeSpan.FromSeconds(2)).Until(d => _basePage.searchTextField);
-            return _basePage.searchTextField != null && searchTextField.Displayed;
+            var searchTextField = new WebDriverWait(_driver, TimeSpan.FromSeconds(2)).Until(d => _basePage.SearchTextField);
+            return _basePage.SearchTextField != null && searchTextField.Displayed;
         }
 
         public void GoToAdminPage()
         {
-            _basePage.adminMenuItem.Click();
+            _basePage.AdminMenuItem.Click();
         }
     }
 }

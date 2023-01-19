@@ -10,7 +10,7 @@ namespace WebUI.Framework.Pages
             _driver = driver;
 
         }
-        public IWebElement searchTextField => _driver.FindElement(By.CssSelector(".oxd-input"));
-        public IWebElement adminMenuItem => _driver.FindElement(By.CssSelector("span[class*= \"oxd-main-menu-item--name\"]"));
+        public IWebElement SearchTextField => _driver.FindElement(By.CssSelector(".oxd-input"));
+        public IWebElement AdminMenuItem => _driver.FindElement(By.CssSelector("span[class*= \"oxd-main-menu-item--name\"]"));
     }
 }

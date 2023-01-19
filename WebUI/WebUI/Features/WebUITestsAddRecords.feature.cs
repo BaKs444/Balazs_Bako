@@ -100,7 +100,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I navigate to job and Pay Grades tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
- testRunner.And("I add a new entry with random name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I add a new entry with \"RandomName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
  testRunner.And("I assign sallary to it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -139,7 +139,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I navigate to job and Pay Grades tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
- testRunner.And("I add a new entry with random name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I add a new entry with \"RandomName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 16
  testRunner.And("I assign sallary to it but click on cancel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

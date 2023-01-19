@@ -10,8 +10,8 @@ namespace WebUI.Framework.Pages
             _driver = driver;
 
         }
-        public IWebElement userNameTextField => _driver.FindElement(By.CssSelector("input[name=username]"));
-        public IWebElement passwordTextField => _driver.FindElement(By.CssSelector("input[name=password]"));
-        public IWebElement logInButton => _driver.FindElement(By.CssSelector("button[class*=login]"));
+        public IWebElement UserNameTextField => _driver.FindElement(By.CssSelector("input[name=username]"));
+        public IWebElement PasswordTextField => _driver.FindElement(By.CssSelector("input[name=password]"));
+        public IWebElement LogInButton => _driver.FindElement(By.CssSelector("button[class*=login]"));
     }
 }
