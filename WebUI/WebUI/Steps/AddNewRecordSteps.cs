@@ -12,9 +12,6 @@ namespace WebUI.Test.Steps
         public readonly BaseContext _baseContext;
         public readonly AdminContext _adminContext;
         public readonly PayGradeContext _payGradeContext;
-        //private const string payGradeName = "RandomName";
-        private const string minimumSallary = "250000";
-        private const string maximumSallary = "300000";
 
         public AddNewRecordSteps(ScenarioContext context)
         {
@@ -31,16 +28,16 @@ namespace WebUI.Test.Steps
             _adminContext.GoToPayGradesSite();
         }
 
-        [When(@"I add a new entry with ""([^""]*)""")]
+        [When(@"I add a new entry with (.*)")]
         public void WhenIAddANewEntryWith(string randomName)
         {
             _payGradeContext.AddNewName(randomName);
         }
 
-        [When(@"I assign sallary to it")]
-        public void WhenIAssignSallaryToIt()
+        [When(@"I assign (.*) minimum and (.*) sallary to it")]
+        public void WhenIAssignMinimumAndSallaryToIt(string minimum, string maximum)
         {
-            _payGradeContext.AddNewCurrency(minimumSallary, maximumSallary);
+            _payGradeContext.AddNewCurrency(minimum, maximum);
         }
 
         [Then(@"I see the changes in the Currencies block")]

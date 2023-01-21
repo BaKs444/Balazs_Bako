@@ -39,15 +39,24 @@ namespace WebUI.Framework.Contexts
         }
         public bool CheckTheCurrencyTab()
         {
-            bool maximum = _payGradesPage.MaximumSallaryField != null;
-            bool minimum = _payGradesPage.MinimumSallaryField != null;
+            bool maximum = _payGradesPage.MaximumSallaryField.Text.Contains("300000");
+            bool minimum = _payGradesPage.MinimumSallaryField.Text.Contains("250000");
             bool contains = (maximum == true && minimum == true) ? true : false;
             return contains;
         }
+        public bool CheckTheNameIsDisplayed()
+        {
+            bool nameDisplayed = _payGradesPage.NameField.Displayed == true;
+            return nameDisplayed;
+        }
+        public bool CheckTheCurrenciesNotDisplayed()
+        {
+            bool currenciesNotDisplayed = _payGradesPage.MinimumSallaryField.Displayed == false;
+            return currenciesNotDisplayed;
+        }
         public bool CheckTheCurrencyTabNotFound()
         {
-            bool noRecordsFound = false;
-            noRecordsFound = _payGradesPage.NoRecordsFound.Displayed == true;
+            bool noRecordsFound = _payGradesPage.NoRecordsFound.Displayed == true;
             return noRecordsFound;
         }
         public void DeleteData()

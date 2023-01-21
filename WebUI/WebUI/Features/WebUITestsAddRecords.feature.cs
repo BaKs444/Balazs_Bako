@@ -75,10 +75,14 @@ namespace WebUI.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add New Record to Pay Grades")]
-        public void AddNewRecordToPayGrades()
+        [NUnit.Framework.TestCaseAttribute("RandomName", "250000", "300000", null)]
+        public void AddNewRecordToPayGrades(string name, string minimum, string maximum, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("minimum", minimum);
+            argumentsOfScenario.Add("maximum", maximum);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add New Record to Pay Grades", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
@@ -100,10 +104,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I navigate to job and Pay Grades tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
- testRunner.And("I add a new entry with \"RandomName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I add a new entry with {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
- testRunner.And("I assign sallary to it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I assign {0} minimum and {1} sallary to it", minimum, maximum), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
  testRunner.Then("I see the changes in the Currencies block", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -114,12 +118,16 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Cancel the addition of new Record to Pay Grades")]
-        public void CancelTheAdditionOfNewRecordToPayGrades()
+        [NUnit.Framework.TestCaseAttribute("RandomName", "250000", "300000", null)]
+        public void CancelTheAdditionOfNewRecordToPayGrades(string name, string minimum, string maximum, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("minimum", minimum);
+            argumentsOfScenario.Add("maximum", maximum);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel the addition of new Record to Pay Grades", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -129,22 +137,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 12
+#line 19
  testRunner.Given("I navigate to webpage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 13
+#line 20
  testRunner.When("I log in as admin user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 21
  testRunner.And("I navigate to job and Pay Grades tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 15
- testRunner.And("I add a new entry with \"RandomName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And(string.Format("I add a new entry with {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 16
- testRunner.And("I assign sallary to it but click on cancel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+ testRunner.And(string.Format("I assign {0} minimum and {1} maximum sallary to it but click on cancel", minimum, maximum), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 24
  testRunner.Then("I don\'t see the changes in the Currencies block", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

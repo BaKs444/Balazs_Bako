@@ -12,8 +12,6 @@ namespace WebUI.Test.Steps
         public readonly BaseContext _baseContext;
         public readonly AdminContext _adminContext;
         public readonly PayGradeContext _payGradeContext;
-        private const string minimumSallary = "250000";
-        private const string maximumSallary = "300000";
 
         public DontAddNewRecordSteps(ScenarioContext context)
         {
@@ -23,17 +21,20 @@ namespace WebUI.Test.Steps
             _payGradeContext = new PayGradeContext(_driver);
         }
 
-        [When(@"I assign sallary to it but click on cancel")]
-        public void WhenIAssignSallaryToItButClickOnCancel()
+        [When(@"I assign (.*) minimum and (.*) maximum sallary to it but click on cancel")]
+        public void WhenIAssignMinimumAndMaximumSallaryToItButClickOnCancel(string minimum, string maximum)
         {
-            _payGradeContext.CancelAddNewCurrency(minimumSallary, maximumSallary);
+            _payGradeContext.CancelAddNewCurrency(minimum, maximum);
         }
 
         [Then(@"I don't see the changes in the Currencies block")]
         public void ThenIDontSeeTheChangesInTheCurrenciesBlock()
         {
             bool currencyNotFound = _payGradeContext.CheckTheCurrencyTabNotFound();
-            Assert.That(currencyNotFound.Equals(true));
+            _adminContext.GoToPayGradesSite();
+            bool nameFound = _payGradeContext.CheckTheNameIsDisplayed();
+
+            Assert.That(nameFound.Equals(true) && currencyNotFound.Equals(true));
         }
 
 
