@@ -46,7 +46,15 @@ namespace WebUI.Framework.Contexts
         }
         public bool CheckTheNameIsDisplayed()
         {
-            bool nameDisplayed = _payGradesPage.NameField.Displayed == true;
+            bool nameDisplayed = true;
+
+            foreach (var item in _payGradesPage.NameFields)
+            {
+                if (item.Text.Contains("RandomName"))
+                {
+                    nameDisplayed = false;
+                }
+            }
             return nameDisplayed;
         }
         public bool CheckTheCurrenciesNotDisplayed()
@@ -61,9 +69,6 @@ namespace WebUI.Framework.Contexts
         }
         public void DeleteData()
         {
-            _payGradesPage.JobButton.Click();
-            _payGradesPage.PayGradesButton.Click();
-
             foreach (var item in _payGradesPage.Table)
             {
                 if (item.Text.Contains("RandomName"))

@@ -27,6 +27,6 @@ namespace WebUI.Framework.Pages
         public IWebElement CancelButton => _driver.FindElement(By.XPath("(//div[@class='oxd-form-actions']//button[@class='oxd-button oxd-button--medium oxd-button--ghost'])[2]"));
         public IWebElement NoRecordsFound => _driver.FindElement(By.XPath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/span"));
         public IList<IWebElement> Table => _driver.FindElements(By.ClassName("oxd-table-card"));
-        public IWebElement NameField => _driver.FindElement(By.XPath("//div[contains(text(),'RandomName')]"));
+        public IList<IWebElement> NameFields => _driver.FindElements(By.XPath("//div[@class='data']"));
     }
 }
