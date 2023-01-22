@@ -13,7 +13,7 @@ namespace RestSharpApi.Tests
         [Test(Description = "Create a booking for Charlie Weasley and then check that we get the same ID as when we created the booking.")]
         public void ReadTestPositive()
         {
-            Helper testHelper = new Helper();
+            ApiClient testHelper = new ApiClient();
             string bookingData = testHelper.BookingData("Charlie", "Weasley", 777, true, "2022-11-11", "2022-12-01", "Wand requiered");
             Dictionary resultResponseData = testHelper.CreateBooking(bookingData);
             string resultHttpStatusCode = testHelper.GetBookingId("Charlie", true);
@@ -25,8 +25,8 @@ namespace RestSharpApi.Tests
         [Test(Description = "Try to get a booking with invalid ID.")]
         public void ReadTestNegative()
         {
-            Helper testHelper = new Helper();
-            Dictionary resultHttpStatusCode = testHelper.GetBookingById("-1", true);
+            ApiClient testHelper = new ApiClient();
+            Dictionary resultHttpStatusCode = testHelper.GetBookingById("-1");
             Assert.That(resultHttpStatusCode["httpStatusCode"].ToString() == "NotFound");
         }
     }

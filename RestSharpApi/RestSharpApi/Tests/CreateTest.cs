@@ -13,7 +13,7 @@ namespace RestSharpApi.Tests
         [Test (Description = "Creating a new booking for Harry Potter.")]
         public void CreateTestPositive()
         {
-            Helper testHelper = new Helper();
+            ApiClient testHelper = new ApiClient();
             string bookingData = testHelper.BookingData("Harry", "Potter", 777, true, "2022-11-11", "2022-12-01", "Wand requiered");
             Dictionary resultHttpStatus = testHelper.CreateBooking(bookingData, true);
             Dictionary resultResponseData = testHelper.CreateBooking(bookingData);
@@ -21,11 +21,11 @@ namespace RestSharpApi.Tests
             Assert.That(resultHttpStatus["httpStatusCode"].ToString() == "OK" & resultResponseData["booking"].ToString().Contains("Harry"));
         }
 
-        [Test (Description = "Creating a new booking for Harry Potter but without totalprice attribute.")]
+        [Test (Description = "Creating a new booking for Harry Potter but without dates attributes.")]
         public void CreateTestNegative()
         {
-            Helper testHelper = new Helper();
-            string bookingData = testHelper.WrongBookingData("Harry", "Potter", true, "2022-11-11", "2022-12-01", "Wand requiered");
+            ApiClient testHelper = new ApiClient();
+            string bookingData = testHelper.WrongBookingData("Harry", "Potter", 777, true, "Wand requiered");
             Dictionary resultHttpStatus = testHelper.CreateBooking(bookingData, true);
 
             Assert.That(resultHttpStatus["httpStatusCode"].ToString() == "InternalServerError");

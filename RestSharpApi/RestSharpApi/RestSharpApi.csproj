@@ -149,7 +149,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Helper\ApiClient.cs" />
+    <Compile Include="Model\BookingData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\DeleteTest.cs" />
     <Compile Include="Tests\UpdateTest.cs" />
