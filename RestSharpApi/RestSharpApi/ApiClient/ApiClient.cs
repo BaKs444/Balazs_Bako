@@ -1,13 +1,11 @@
 ﻿using RestSharp;
 using RestSharp.Authenticators;
 
-
 namespace RestSharpApi
 {
     public class ApiClient
     {
         private static readonly RestClient restClient = new RestClient("https://restful-booker.herokuapp.com/");
-
         public RestResponse GetBookingById(string bookingid)
         {
             var request = new RestRequest("booking/{bookingid}", Method.Get);

@@ -1,8 +1,9 @@
 ﻿using RestSharp;
+using RestSharp.Authenticators;
 using RestSharpApi.Model;
 using System.Text.Json;
 
-namespace RestSharpApi.RequestFactory
+namespace RestSharpApi.Factory
 {
     public class CreateDataFactory
     {
