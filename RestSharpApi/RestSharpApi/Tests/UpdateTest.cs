@@ -2,6 +2,8 @@
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using NUnit.Framework;
+using RestSharp;
+using RestSharpApi.RequestFactory;
 
 namespace RestSharpApi.Tests
 {
@@ -10,29 +12,32 @@ namespace RestSharpApi.Tests
     [AllureSuite("Update operation")]
     public class UpdateTest
     {
-        [Test (Description = "Update the just created booking and check that it is really updated.")]
+        [Test(Description = "Update the just created booking and check that it is really updated.")]
         public void UpdateTestPositive()
         {
+            CreateDataFactory CreateBookingData = new CreateDataFactory();
             ApiClient testHelper = new ApiClient();
-            string bookingData = testHelper.BookingData("Charlie", "Weasley", 777, true, "2022-11-11", "2022-12-01", "Wand requiered");
-            Dictionary justCreatedBooking = testHelper.CreateBooking(bookingData);
-            string bookingID = justCreatedBooking["bookingid"].ToString();
 
-            string newBookingData = testHelper.BookingData("Lord", "Voldemort", 777, false, "2022-11-11", "2022-12-01", "Harry Potter requiered");
-            Dictionary testResult = testHelper.UpdateBooking(bookingID, newBookingData, true);
-            Dictionary testResultData = testHelper.UpdateBooking(bookingID, newBookingData);
+            string bookingData = CreateBookingData.BookingData("Charlie", "Weasley", 777, true, "2022-11-11", "2022-12-01", "Wand requiered");
+            Dictionary deserialized = System.Text.Json.JsonSerializer.Deserialize<Dictionary>(testHelper.CreateBooking(bookingData).Content);
+            string bookingId = deserialized["bookingid"].ToString();
 
-            Assert.That(testResult["httpStatusCode"].ToString() == "OK" & testResultData["lastname"].ToString() == ("Voldemort"));
+            string newBookingData = CreateBookingData.BookingData("Lord", "Voldemort", 777, false, "2022-11-11", "2022-12-01", "Harry Potter requiered");
+            RestResponse testResult = testHelper.UpdateBooking(bookingId, newBookingData);
+           
+            Assert.That(testResult.StatusCode.ToString() == "OK" & testResult.Content.Contains("Voldemort"));
         }
 
         [Test(Description = "Try to update a not existing booking")]
         public void UpdateTestNegative()
         {
+            CreateDataFactory CreateBookingData = new CreateDataFactory();
             ApiClient testHelper = new ApiClient();
-            string newBookingData = testHelper.BookingData("Lord", "Voldemort", 777, false, "2022-11-11", "2022-12-01", "Harry Potter requiered");
-            Dictionary resultHttpStatusCode = testHelper.UpdateBooking("-1", newBookingData, true);
-            
-            Assert.That(resultHttpStatusCode["httpStatusCode"].ToString() == "MethodNotAllowed");
+
+            string newBookingData = CreateBookingData.BookingData("Lord", "Voldemort", 777, false, "2022-11-11", "2022-12-01", "Harry Potter requiered");
+            RestResponse resultHttpStatusCode = testHelper.UpdateBooking("-1", newBookingData);
+
+            Assert.That(resultHttpStatusCode.StatusCode.ToString() == "MethodNotAllowed");
         }
     }
 }
